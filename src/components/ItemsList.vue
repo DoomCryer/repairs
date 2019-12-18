@@ -104,7 +104,6 @@ export default {
   methods: {
     ...mapActions(["fetchItems", "addItem", "editItem", "deleteItem"]),
     openModal(item) {
-      console.log("item:", item);
       this.modalTitle = `${item ? "Редактирование" : "Создание"} записи`;
       this.item = item || {};
       this.visible = true;
