@@ -21,8 +21,12 @@
         </template>
         <template v-slot:cell(actions)="row">
           <div class="actionGroup">
-            <b-button variant="primary" @click="openModal(row.item)">Редактировать</b-button>
-            <b-button variant="danger" @click="deleteItem(row.item)">Удалить</b-button>
+            <b-button variant="primary" @click="openModal(row.item)">
+              <MdCreateIcon />
+            </b-button>
+            <b-button variant="danger" @click="deleteItem(row.item)">
+              <MdTrashIcon />
+            </b-button>
           </div>
         </template>
         <template v-slot:foot(name)="data">
@@ -32,14 +36,6 @@
           <span>{{ total }}</span>
         </template>
         <template v-slot:foot()="data" />
-        <!-- <b-tfoot>
-          <b-tr>
-            <b-td>
-              ИТОГО:
-              <b>{{ total }}</b>
-            </b-td>
-          </b-tr>
-        </b-tfoot>-->
       </b-table>
     </b-row>
     <b-row>
@@ -65,6 +61,8 @@ import moment from "moment";
 import EditForm from "./EditForm";
 import { CATEGORY_LABELS } from "../constants/categories";
 import { formatMoney } from "../utils/formatters";
+import MdCreateIcon from "vue-ionicons/dist/md-create.vue";
+import MdTrashIcon from "vue-ionicons/dist/md-trash.vue";
 
 export default {
   data() {
@@ -140,7 +138,9 @@ export default {
     }
   },
   components: {
-    EditForm
+    EditForm,
+    MdCreateIcon,
+    MdTrashIcon
   },
   created() {
     this.fetchItems();
